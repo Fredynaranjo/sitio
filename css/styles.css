@@ -1,35 +1,76 @@
-/* Estilos generales para limpiar márgenes */
+/* Reseteo global de estilos */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f7f6;
-    color: #333;
+    /* Fondo degradado que simula el entorno azul/grisáceo de la imagen original */
+    background: linear-gradient(to bottom, #4b6584, #778ca3);
+    min-height: 100vh;
+}
+
+/* Contenedor del encabezado */
+.header-navigation {
+    width: 100%;
+    padding: 25px 40px;
+    background: transparent;
+}
+
+/* Estructura Navbar con Flexbox para alineación exacta */
+.navbar {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    height: 100vh;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-/* Estilo de la tarjeta de bienvenida */
-.contenedor-bienvenida {
-    text-align: center;
-    background-color: #ffffff;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+/* Estilos del Logotipo (Negrita gruesa y separación de colores) */
+.logo {
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: 900;
+    letter-spacing: 1px;
 }
 
-h1 {
-    color: #0070f3;
-    margin-bottom: 15px;
+.logo span {
+    color: #00e676; /* Verde brillante idéntico al de la referencia */
 }
 
-p {
-    font-size: 1.1rem;
-    color: #666;
+/* Lista de enlaces */
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 32px; /* Espaciado óptimo entre los textos en español */
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 400;
+    transition: color 0.2s ease-in-out;
+}
+
+/* Estado activo (Inicio) y efectos Hover */
+.nav-links a.active, 
+.nav-links a:hover {
+    color: #00e676;
+}
+
+/* Optimización para diseño responsivo (Móviles/Tablets) */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        gap: 18px;
+    }
+    
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 16px;
+    }
 }
