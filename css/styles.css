@@ -1,4 +1,15 @@
-/* Reseteo global de estilos */
+/* ==========================================================================
+   1. VARIABLES GLOBALES Y RESETEO
+   ========================================================================== */
+:root {
+    --brand-green: #00e676;
+    --text-white: #ffffff;
+    --hero-bg-sky: #00b4d8; /* Azul cyan del cielo de fondo */
+    --btn-blue: #0066cc;    /* Azul corporativo del botón Conoce Más */
+    --btn-blue-hover: #0052a3;
+    --text-muted: rgba(255, 255, 255, 0.7);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -7,70 +18,269 @@
 }
 
 body {
-    /* Fondo degradado que simula el entorno azul/grisáceo de la imagen original */
-    background: linear-gradient(to bottom, #4b6584, #778ca3);
+    background-color: #0f172a; /* Fondo oscuro base */
     min-height: 100vh;
+    color: var(--text-white);
+    overflow-x: hidden;
 }
 
-/* Contenedor del encabezado */
+/* ==========================================================================
+   2. MENÚ DE NAVEGACIÓN (PRESERVADO Y OPTIMIZADO)
+   ========================================================================== */
 .header-navigation {
     width: 100%;
-    padding: 25px 40px;
-    background: transparent;
+    padding: 20px 40px;
+    background: rgba(15, 23, 42, 0.8); /* Ligera opacidad para superponerse elegantemente */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
 }
 
-/* Estructura Navbar con Flexbox para alineación exacta */
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: block;
     max-width: 1200px;
     margin: 0 auto;
 }
 
-/* Estilos del Logotipo (Negrita gruesa y separación de colores) */
 .logo {
-    color: #ffffff;
-    font-size: 24px;
+    float: left;
+    color: var(--text-white);
+    font-size: 18pt;
     font-weight: 900;
     letter-spacing: 1px;
+    line-height: 40px;
 }
 
 .logo span {
-    color: #00e676; /* Verde brillante idéntico al de la referencia */
+    color: var(--brand-green);
 }
 
-/* Lista de enlaces */
 .nav-links {
-    display: flex;
+    float: right;
     list-style: none;
-    gap: 32px; /* Espaciado óptimo entre los textos en español */
+    line-height: 40px;
+}
+
+.nav-links li {
+    display: inline-block;
+    margin-left: 32px;
 }
 
 .nav-links a {
     text-decoration: none;
-    color: #ffffff;
-    font-size: 16px;
+    color: var(--text-white);
+    font-size: 11pt;
     font-weight: 400;
     transition: color 0.2s ease-in-out;
 }
 
-/* Estado activo (Inicio) y efectos Hover */
 .nav-links a.active, 
 .nav-links a:hover {
-    color: #00e676;
+    color: var(--brand-green);
 }
 
-/* Optimización para diseño responsivo (Móviles/Tablets) */
-@media (max-width: 768px) {
-    .navbar {
-        flex-direction: column;
-        gap: 18px;
+/* Limpieza de floats para la barra de navegación */
+.navbar::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* ==========================================================================
+   3. SECCIÓN HERO (EQUINOX EV)
+   ========================================================================== */
+.hero-section {
+    width: 100%;
+    min-height: 100vh;
+    padding-top: 100px; /* Espacio para no ser tapado por el menú absoluto */
+    background: linear-gradient(135deg, var(--hero-bg-sky) 0%, #1e293b 70%);
+    position: relative;
+}
+
+.hero-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    position: relative;
+    min-height: calc(100vh - 100px);
+}
+
+/* Bloque Izquierdo: Textos */
+.hero-content {
+    width: 45%;
+    display: block;
+    float: left;
+    padding-top: 40px;
+    position: relative;
+    z-index: 3;
+}
+
+.hero-subtitle {
+    display: block;
+    font-size: 13pt;
+    font-weight: 600;
+    color: var(--text-white);
+    margin-bottom: 8px;
+}
+
+.hero-title {
+    font-size: 26pt;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--text-white);
+    margin-bottom: 24px;
+}
+
+/* Botón "Conoce más" */
+.btn-primary {
+    display: inline-block;
+    background-color: var(--btn-blue);
+    color: var(--text-white);
+    text-decoration: none;
+    padding: 12px 40px;
+    font-size: 11pt;
+    font-weight: 600;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+}
+
+.btn-primary:hover {
+    background-color: var(--btn-blue-hover);
+}
+
+/* Bloque Derecho: Contenedor del Auto */
+.hero-image-wrapper {
+    width: 55%;
+    display: block;
+    float: right;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-car-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transform: scale(1.05); /* Ligero aumento para el dinamismo de la perspectiva del auto */
+}
+
+/* Limpieza de floats de contenido principal */
+.hero-container::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* ==========================================================================
+   4. ICONOS DE ASISTENCIA Y ELEMENTOS FLOTANTES
+   ========================================================================== */
+.hero-features-bar {
+    position: absolute;
+    bottom: 40px;
+    left: 20px;
+    width: 60%;
+    z-index: 4;
+}
+
+.feature-item {
+    display: inline-block;
+    width: 15%;
+    margin-right: 1%;
+    vertical-align: top;
+    text-align: center;
+}
+
+.feature-icon {
+    display: block;
+    font-size: 14pt;
+    color: var(--text-white);
+    margin-bottom: 6px;
+    opacity: 0.9;
+}
+
+.feature-text {
+    font-size: 6pt;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Botón flotante de Chat */
+.floating-chat {
+    position: absolute;
+    bottom: 30px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: var(--btn-blue);
+    border-radius: 50%;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    z-index: 5;
+    transition: transform 0.2s ease;
+}
+
+.floating-chat:hover {
+    transform: scale(1.05);
+}
+
+.chat-icon {
+    font-size: 16pt;
+    color: var(--text-white);
+}
+
+/* ==========================================================================
+   5. RESPONSIVIDAD (MEDIA QUERIES)
+   ========================================================================== */
+@media (max-width: 992px) {
+    .hero-content {
+        width: 100%;
+        float: none;
+        text-align: center;
+        padding-top: 20px;
     }
-    
+    .hero-image-wrapper {
+        width: 100%;
+        float: none;
+        margin-top: 30px;
+    }
+    .hero-features-bar {
+        position: relative;
+        width: 100%;
+        left: 0;
+        bottom: 0;
+        margin-top: 40px;
+        text-align: center;
+    }
+    .feature-item {
+        width: 28%;
+        margin-bottom: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-navigation {
+        position: relative;
+        padding: 20px;
+    }
+    .logo {
+        float: none;
+        text-align: center;
+        margin-bottom: 10px;
+    }
     .nav-links {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 16px;
+        float: none;
+        text-align: center;
+    }
+    .nav-links li {
+        margin: 0 10px;
+    }
+    .hero-title {
+        font-size: 20pt;
     }
 }
